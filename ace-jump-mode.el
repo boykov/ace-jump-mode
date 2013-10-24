@@ -1114,6 +1114,10 @@ will stop synchronizing mark information with emacs mark ring. "
     (execute-kbd-macro or-mac)
     (set-input-method 'russian-computer)
     (execute-kbd-macro or-mac)
+    (insert-string " ")
+    (execute-kbd-macro or-mac)
+    (set-input-method 'nil)
+    (execute-kbd-macro or-mac)
     (set-input-method method)
     (insert-string " ")))
 
@@ -1133,7 +1137,7 @@ will stop synchronizing mark information with emacs mark ring. "
  (lambda (lst)
    (puthash (car lst) (cadr lst) eab/char-en-ru))
  (mapcar
-  '(lambda (x) (split-string x "" 't))
+  (lambda (x) (split-string x "" 't))
   (split-string
    (eab/with-kbd-output-to-string
     (mapcar
@@ -1142,8 +1146,8 @@ will stop synchronizing mark information with emacs mark ring. "
       (with-temp-buffer
 	(mapcar
 	 'insert-char
-	 (append (number-sequence 35 122)
-	       (number-sequence 1040 1105)))
+	 (remove-if (lambda (x) (or (eq x 63) (eq x 47)))
+		    (number-sequence 35 122)))
 	(buffer-string)) "" 't))) " " 't)))
 
 (defun eab/or-char (char)
