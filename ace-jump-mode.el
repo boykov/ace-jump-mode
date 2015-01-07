@@ -794,7 +794,7 @@ word-mode and char-mode"
 ;;;###autoload
 (defun ace-jump-char-mode (query-char)
   "AceJump char mode"
-  (interactive (list (read-char "Query Char:" 't)))
+  (interactive (list (read-char "Query Char:")))
 
   ;; We should prevent recursion call this function.  This can happen
   ;; when you trigger the key for ace jump again when already in ace
