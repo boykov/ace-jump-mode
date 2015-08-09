@@ -807,7 +807,7 @@ word-mode and char-mode"
   ;; others : digit , alpha, punc
   (setq ace-jump-query-char query-char)
   (setq ace-jump-current-mode 'ace-jump-char-mode)
-  (ace-jump-do (regexp-quote (make-string 1 query-char))))
+  (ace-jump-do (eab/or-char (make-string 1 query-char))))
 
 
 ;;;###autoload
