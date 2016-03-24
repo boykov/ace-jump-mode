@@ -1113,8 +1113,12 @@ will stop synchronizing mark information with emacs mark ring. "
       (with-temp-buffer
 	(mapcar
 	 'insert-char
-	 (remove-if (lambda (x) (or (eq x 63) (eq x 47)))
-		    (number-sequence 35 122)))
+	 (remove-if
+	  (lambda (x)
+	    (or
+	     (eq x (string-to-char "?"))
+	     (eq x (string-to-char "/"))))
+	  (number-sequence 35 122)))
 	(buffer-string)) "" 't))) " " 't)))
 
 (defun eab/or-char (char)
