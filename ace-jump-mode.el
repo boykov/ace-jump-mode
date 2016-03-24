@@ -1121,6 +1121,8 @@ will stop synchronizing mark information with emacs mark ring. "
 	  (number-sequence 35 122)))
 	(buffer-string)) "" 't))) " " 't)))
 
+(setq eab/char-en-ru-special '("." "," "<" ">" "Ю" "ю" "б" "Б"))
+
 (defun eab/or-char (char)
   (let ((or-char (gethash char eab/char-en-ru)))
     (concat "\\(" (regexp-quote char) "\\|" (regexp-quote or-char) "\\)")))
